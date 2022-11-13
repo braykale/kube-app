@@ -5,10 +5,10 @@ metadata:
   labels:
     app: vprodb
 spec:
-  replicas: 1
   selector:
     matchLabels:
           app: vprodb
+  replicas: 1
   template:
     metadata:
       labels:
@@ -23,11 +23,11 @@ spec:
             - mountPath: /var/lib/mysql
               name: vpro-db-data
           ports:
-            - name: vprodb-port
-              containerPort: 3306
+          - name: vprodb-port
+            containerPort: 3306
           env:
-          - name: MYSQL_ROOT_PASSWORD
-            valueFrom:
+           - name: MYSQL_ROOT_PASSWORD
+             valueFrom:
               secretKeyRef:
                 name: app-secret
                 key: dp-pass
